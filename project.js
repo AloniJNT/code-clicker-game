@@ -1,19 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- GAME DATA ---
+    //  GAME DATA 
     let linesOfCode = 0;
     let clickPower = 1;
     let upgradeCost = 10;
     let autoCodeSpeed = 0;
     let juniorDevCost = 50;
 
-    // --- EVENT & TIMER DATA ---
+    //  EVENT AND TIMER DATA
     let eventMultiplier = 1; 
     let costMultiplier = 1;
     const HACKATHON_WAIT = 15 * 60; // 15 minutes in seconds
     let timeLeft = HACKATHON_WAIT;
 
-    // --- ELEMENTS ---
+    //  ELEMENTS 
     const countDisplay = document.getElementById('count');
     const timerDisplay = document.getElementById('event-timer');
     const powerDisplay = document.getElementById('click-power');
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const upgradeButton = document.getElementById('upgrade-keyboard');
     const juniorButton = document.getElementById('buy-junior');
 
-    // --- 1. THE COUNTDOWN TIMER LOOP ---
+    //  1. THE COUNTDOWN TIMER LOOP 
     setInterval(() => {
         if (eventMultiplier === 1) { // Only count down if event is not active
             timeLeft--;
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         timerDisplay.innerText = `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // --- 2. HACKATHON LOGIC ---
+    //  2. HACKATHON LOGIC 
     function startHackathon() {
         eventMultiplier = 3;
         costMultiplier = 0.5;
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 30000);
     }
 
-    // --- 3. CLICKING & UPGRADES ---
+    //  3. CLICKING AND UPGRADES 
     clickButton.addEventListener('click', () => {
         linesOfCode += (clickPower * eventMultiplier);
         updateUI();
@@ -84,13 +84,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 4. AUTO-CLICKER LOOP ---
+    //  4. AUTO-CLICKER LOOP
     setInterval(() => {
         linesOfCode += (autoCodeSpeed * eventMultiplier);
         updateUI();
     }, 1000);
 
-    // --- 5. MAIN UI UPDATER ---
+    //  5. MAIN UI UPDATER 
     function updateUI() {
         countDisplay.innerText = Math.floor(linesOfCode);
         powerDisplay.innerText = (clickPower * eventMultiplier);
