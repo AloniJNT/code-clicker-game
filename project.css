@@ -1,44 +1,43 @@
+/* עיצוב כללי של הגוף - יצירת אווירה של עורך קוד כהה */
 body { 
     font-family: 'Courier New', monospace; 
     text-align: center; 
     padding-top: 20px; 
     background-color: #1e1e1e; 
     color: #d4d4d4; 
+    margin: 0;
+    overflow-x: hidden; /* מונע גלילה לצדדים אם כפתור המזל מופיע בקצה */
 }
 
+/* עיצוב באנר האירועים עם אנימציית הבהוב */
 #event-banner {
-    display: none;
+    display: none; /* מוסתר כברירת מחדל, יוצג דרך ה-JS */
     background: #ffcc00;
     color: #000;
     padding: 15px;
     font-weight: bold;
     animation: flash 1s infinite;
-    border-radius: 5px;
-    margin-bottom: 20px;
 }
 
 @keyframes flash {
     0% { opacity: 1; }
-    50% { opacity: 0.6; }
+    50% { opacity: 0.7; }
     100% { opacity: 1; }
 }
 
+/* עיצוב לוח הנתונים */
 .stats {
     background: #252526;
     display: inline-block;
     padding: 20px;
     border-radius: 10px;
-    margin-bottom: 20px;
     border: 1px solid #333;
+    margin: 20px;
 }
 
-#event-timer {
-    color: #ffcc00;
-    font-size: 1.5rem;
-}
-
+/* עיצוב כפתור הלחיצה הראשי כולל אפקט לחיצה (ירידה למטה) */
 #code-button { 
-    font-size: 22px; 
+    font-size: 24px; 
     padding: 30px 60px; 
     cursor: pointer; 
     background-color: #007acc; 
@@ -50,10 +49,11 @@ body {
 
 #code-button:active { 
     box-shadow: 0 0 #005f99;
-    transform: translateY(6px);
+    transform: translateY(6px); /* הזזה למטה כשלוחצים */
 }
 
-.shop { margin-top: 40px; border-top: 1px solid #444; padding-top: 20px; }
+/* עיצוב החנות והכפתורים שלה */
+.shop { margin-top: 40px; padding-top: 20px; border-top: 1px solid #444; }
 
 button[id^="upgrade"], button[id^="buy"] {
     padding: 12px;
@@ -63,7 +63,56 @@ button[id^="upgrade"], button[id^="buy"] {
     border-radius: 5px;
     cursor: pointer;
     min-width: 280px;
-    font-size: 1rem;
+    margin: 5px;
 }
 
-button:hover { background-color: #218838; }
+/* כפתור המזל הזוהר - ממוקם מעל הכל (z-index) ועם אנימציית פעימה */
+.lucky-button {
+    position: absolute; /* מאפשר ל-JS לקבוע קואורדינטות X ו-Y רנדומליות */
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #ff00ff, #800080);
+    color: white;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 0 20px #ff00ff;
+    z-index: 1000;
+    animation: pulse 1.5s infinite;
+}
+/* העיצוב של מיכל הטיימר */
+#lucky-timer-container {
+    display: none;             /* נשאר מוסתר עד שמופעל ב-JS */
+    background: rgba(255, 0, 255, 0.1); /* רקע ורוד שקוף עדין */
+    border: 2px solid #ff00ff;  /* מסגרת ורודה זוהרת */
+    border-radius: 8px;        /* פינות מעוגלות */
+    padding: 10px;             /* מרווח פנימי */
+    margin: 15px 0;            /* מרווח מלמעלה ומלמטה */
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.4); /* הילה זוהרת מסביב */
+}
+
+/* עיצוב הטקסט "BONUS ACTIVE" */
+.bonus-label {
+    font-size: 0.9rem;
+    color: #ff00ff;
+    display: block;            /* יורד שורה מעל המספרים */
+    margin-bottom: 5px;
+    letter-spacing: 1px;       /* מרווח בין האותיות למראה הייטקי */
+}
+
+/* עיצוב הספרות של הטיימר עצמו */
+#lucky-timer {
+    font-size: 1.8rem;         /* מספרים גדולים וברורים */
+    color: #ffffff;
+    font-weight: bold;
+    font-family: 'Courier New', monospace; /* גופן של שעון דיגיטלי */
+    text-shadow: 0 0 10px #ff00ff; /* זהר ורוד על המספרים */
+}
+
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
