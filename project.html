@@ -2,35 +2,48 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Code Clicker: Hackathon Edition</title>
-    <link rel="stylesheet" href="project.css">
+    <title>Code Clicker: Pro Edition</title>
+    <!-- קישור לקובץ העיצוב -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-   
+    <!-- הבאנר העליון: משמש להצגת הודעות על אירועים כמו האקתון או בונוסים -->
     <div id="event-banner">🚀 HACKATHON ACTIVE! 3X CODE & 50% OFF!</div>
+
+    <!-- מיכל לטיימר של הבונוס - מוסתר כברירת מחדל (display: none) -->
+    <div id="lucky-timer-container">
+        <span class="bonus-label">🌟 BONUS ACTIVE:</span>
+        <!-- כאן ה-JavaScript יכניס את הדקות והשניות -->
+        <span id="lucky-timer">00:00</span>
+    </div>
 
     <h1>Code Clicker</h1>
     
+    <!-- לוח הסטטיסטיקות: כאן מוצגים כל הנתונים המשתנים של השחקן -->
     <div class="stats">
-        <p>Lines of Code: <span id="count">0</span></p>
-        <p>Next Hackathon in: <span id="event-timer">15:00</span></p>
+        <p>Lines of Code: <span id="count">0</span></p> <!-- כמות הקוד שנצברה -->
+        <p>Next Hackathon in: <span id="event-timer">15:00</span></p> <!-- זמן עד להאקתון הבא -->
         <hr>
-        <p>Click Power: <span id="click-power">1</span> LOC/click</p>
-        <p>Auto-Rate: <span id="auto-speed">0</span> LOC/sec</p>
+        <p>Click Power: <span id="click-power">1</span> LOC/click</p> <!-- כוח הלחיצה הנוכחי -->
+        <p>Auto-Rate: <span id="auto-speed">0</span> LOC/sec</p> <!-- קצב צבירה אוטומטי -->
     </div>
     
+    <!-- אזור הלחיצה: הכפתור המרכזי של המשחק -->
     <div class="main-area">
         <button id="code-button">Execute click()</button>
     </div>
 
+    <!-- חנות השדרוגים: כאן השחקן קונה שיפורים בכסף (קוד) שצבר -->
     <div class="shop">
         <h2>Developer Shop</h2>
+        <!-- כפתורי השדרוג: הטקסט שלהם ישתנה דינמית דרך ה-JavaScript -->
         <button id="upgrade-keyboard">Buy Better Keyboard (Cost: 10)</button>
         <br><br>
         <button id="buy-junior">Hire Junior Dev (Cost: 50)</button>
     </div>
 
-    <script src="project.js"></script>
+    <!-- חיבור לקובץ הלוגיקה - חייב להיות בסוף ה-body -->
+    <script src="script.js"></script>
 </body>
 </html>
