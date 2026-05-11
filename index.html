@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Code Clicker: Pro Edition</title>
     <link rel="stylesheet" href="index.css">
+    <!-- Confetti Library -->
+    <script src="https://jsdelivr.net"></script>
 </head>
 <body>
 
@@ -26,14 +28,21 @@
     </div>
     
     <div class="main-area">
-        <button id="code-button">click</button>
+        <button id="code-button">click 🖥️</button>
     </div>
 
     <div class="shop">
         <h2>Developer Shop</h2>
-        <button id="upgrade-keyboard">Buy Better Keyboard (Cost: 10)</button>
-        <br><br>
-        <button id="buy-junior">Hire Junior Dev (Cost: 50)</button>
+        
+        <div class="item-container">
+            <button id="upgrade-keyboard">upgrade Keyboard (Cost: 10)</button>
+            <button id="sell-keyboard" class="sell-btn">Sell (70% Refund)</button>
+        </div>
+        
+        <div class="item-container">
+            <button id="buy-junior">Hire Junior Dev (Cost: 50)</button>
+            <button id="sell-junior" class="sell-btn">Sell (70% Refund)</button>
+        </div>
     </div>
 
     <script src="index.js"></script>
