@@ -1,68 +1,123 @@
-body { 
-    font-family: 'Courier New', monospace; 
-    text-align: center; 
-    padding: 10px; 
-    background-color: #1e1e1e; 
-    color: #d4d4d4; 
+:root {
+    --primary-neon: #61afef;
+    --secondary-neon: #98c379;
+    --accent-color: #c678dd;
+    --danger: #e06c75;
+    --bg-dark: #0f1115;
+    --card-bg: rgba(33, 37, 43, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --button-depth: #005f99;
+}
+
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: clamp(10px, 4vw, 40px);
+    font-family: 'Fira Code', 'Courier New', monospace;
+    color: #abb2bf;
     overflow-x: hidden;
-    touch-action: manipulation;
 }
 
 #event-banner {
     display: none;
-    background: #ffcc00;
-    color: #000;
-    padding: 10px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2000;
+    padding: 12px;
     font-weight: bold;
-    font-size: 14px;
-    animation: flash 1s infinite;
-}
-
-@keyframes flash {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.6; }
+    text-align: center;
+    background: var(--accent-color);
+    color: white;
 }
 
 .stats {
-    background: #252526;
-    display: inline-block;
-    padding: 15px;
-    border-radius: 10px;
-    border: 1px solid #333;
-    margin: 15px auto;
-    width: 90%;
-    max-width: 400px;
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    border-radius: clamp(15px, 4vw, 25px);
+    padding: clamp(20px, 5vw, 40px);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+    margin: 40px 0 20px 0;
 }
 
-.error-text {
-    color: #ff4d4d !important;
-    transition: 0.2s;
-    display: inline-block;
-    transform: scale(1.1);
+#count, #event-timer, #click-power, #auto-speed {
+    display: block;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    font-weight: 800;
+    color: var(--primary-neon);
 }
 
-#code-button { 
-    font-size: 24px; 
-    padding: 20px 40px; 
-    cursor: pointer; 
-    background-color: #007acc; 
-    color: white; 
-    border: none; 
-    border-radius: 5px;
-    box-shadow: 0 6px #005f99;
-    width: 80%;
-    max-width: 250px;
+#event-timer { color: var(--danger); }
+
+hr {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    margin: 20px 0;
 }
 
-#code-button:active { 
-    box-shadow: 0 0 #005f99;
+.main-area {
+    margin: 30px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+#code-button {
+    width: clamp(140px, 40vw, 180px);
+    height: clamp(140px, 40vw, 180px);
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, #1e2227 0%, #121417 100%);
+    color: var(--primary-neon);
+    font-size: clamp(1rem, 4vw, 1.4rem);
+    font-weight: 900;
+    cursor: pointer;
+    box-shadow: 0 8px 0 var(--button-depth), 0 15px 25px rgba(0, 0, 0, 0.5);
+    transition: all 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#code-button:active {
     transform: translateY(6px);
+    box-shadow: 0 2px 0 var(--button-depth), 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
-.shop { margin-top: 30px; padding-top: 20px; border-top: 1px solid #444; }
+.shop {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
 
-button[id^="upgrade"], button[id^="buy"] { 
+.item-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 5px;
+}
+
+/* החזרת העיצוב הירוק והאדום המקורי */
+button[id^="upgrade"], button[id^="buy"] {
     padding: 15px;
     background-color: #28a745;
     color: white;
@@ -71,39 +126,19 @@ button[id^="upgrade"], button[id^="buy"] {
     cursor: pointer;
     width: 90%;
     max-width: 350px;
-    margin: 8px;
+    font-weight: bold;
 }
 
 button[id^="sell"] {
     padding: 10px;
     background-color: rgb(184, 11, 11);
-    color:white;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    width:50%;
+    width: 60%;
     max-width: 200px;
-    margin: 5px;
-}
-
-.lucky-button {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    background: radial-gradient(circle, #ff00ff, #800080);
-    color: white;
-    border: 2px solid #fff;
-    border-radius: 50%;
-    z-index: 1000;
-    cursor: pointer;
-    font-weight: bold;
-    font-size: 12px;
-    animation: pulse 1.5s infinite;
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    margin-bottom: 15px;
 }
 
 #lucky-timer-container {
@@ -115,11 +150,16 @@ button[id^="sell"] {
     margin: 10px auto;
     width: 80%;
     max-width: 300px;
+    text-align: center;
 }
 
-#lucky-timer {
-    font-size: 1.5rem;
-    color: #ffffff;
-    font-weight: bold;
-    text-shadow: 0 0 10px #ff00ff;
+.error-text {
+    color: var(--danger) !important;
+    animation: shake 0.4s;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
