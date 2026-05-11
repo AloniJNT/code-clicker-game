@@ -62,7 +62,7 @@ body {
 
 .shop { margin-top: 30px; padding-top: 20px; border-top: 1px solid #444; }
 
-button[id^="upgrade"], button[id^="buy"] {
+button[id^="upgrade"], button[id^="buy"] { 
     padding: 15px;
     background-color: #28a745;
     color: white;
@@ -72,6 +72,18 @@ button[id^="upgrade"], button[id^="buy"] {
     width: 90%;
     max-width: 350px;
     margin: 8px;
+}
+
+button[id^="sell"] {
+    padding: 10px;
+    background-color: rgb(184, 11, 11);
+    color:white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width:50%;
+    max-width: 200px;
+    margin: 5px;
 }
 
 .lucky-button {
