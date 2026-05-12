@@ -82,7 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     }
 
-    // --- כפתור מזל (מערכת בונוסים) ---
     setInterval(() => {
         if (Math.floor(Math.random() * 5) + 1 === 3) {
             const btn = document.createElement('button');
@@ -171,7 +170,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // קצב אוטומטי
     setInterval(() => {
         linesOfCode += (autoCodeSpeed * eventMultiplier * luckyMultiplier);
         updateUI();
