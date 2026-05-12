@@ -28,6 +28,7 @@ body {
     overflow-x: hidden;
 }
 
+/* באנר אירועים */
 #event-banner {
     display: none;
     width: 100%;
@@ -37,8 +38,7 @@ body {
     padding: 12px;
     font-weight: bold;
     text-align: center;
-    background: var(--accent-color);
-    color: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .stats {
@@ -54,11 +54,20 @@ body {
     margin: 40px 0 20px 0;
 }
 
+.stats p {
+    font-size: clamp(0.7rem, 2vw, 0.85rem);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 15px 0 5px;
+    opacity: 0.8;
+}
+
 #count, #event-timer, #click-power, #auto-speed {
     display: block;
     font-size: clamp(1.5rem, 6vw, 2.5rem);
     font-weight: 800;
     color: var(--primary-neon);
+    text-shadow: 0 0 20px rgba(97, 175, 239, 0.3);
 }
 
 #event-timer { color: var(--danger); }
@@ -87,11 +96,9 @@ hr {
     font-size: clamp(1rem, 4vw, 1.4rem);
     font-weight: 900;
     cursor: pointer;
+    position: relative;
     box-shadow: 0 8px 0 var(--button-depth), 0 15px 25px rgba(0, 0, 0, 0.5);
     transition: all 0.1s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 #code-button:active {
@@ -105,7 +112,7 @@ hr {
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 15px;
 }
 
 .item-container {
@@ -113,43 +120,71 @@ hr {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    gap: 5px;
+    gap: 8px;
 }
 
-/* החזרת העיצוב הירוק והאדום המקורי */
 button[id^="upgrade"], button[id^="buy"] {
     padding: 15px;
     background-color: #28a745;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     width: 90%;
     max-width: 350px;
     font-weight: bold;
+    transition: 0.2s;
+}
+
+button[id^="upgrade"]:hover, button[id^="buy"]:hover {
+    background-color: #218838;
 }
 
 button[id^="sell"] {
     padding: 10px;
-    background-color: rgb(184, 11, 11);
+    background-color: #b20b0b;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     width: 60%;
     max-width: 200px;
-    margin-bottom: 15px;
+    font-size: 0.8rem;
+    transition: 0.2s;
+}
+
+button[id^="sell"]:hover {
+    background-color: #d30c0c;
+}
+
+.lucky-button {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 1000;
+    animation: luckyPulse 1.5s infinite;
+}
+
+@keyframes luckyPulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 0 10px var(--accent-color); }
+    50% { transform: scale(1.1); box-shadow: 0 0 30px var(--accent-color); }
 }
 
 #lucky-timer-container {
     display: none;
     background: rgba(255, 0, 255, 0.1);
     border: 2px solid #ff00ff;
-    border-radius: 8px;
-    padding: 10px;
-    margin: 10px auto;
-    width: 80%;
-    max-width: 300px;
+    border-radius: 12px;
+    padding: 15px;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 350px;
     text-align: center;
 }
 
@@ -162,4 +197,9 @@ button[id^="sell"] {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
     75% { transform: translateX(5px); }
+}
+
+@media (max-width: 480px) {
+    body { padding: 15px; }
+    .stats { padding: 20px; }
 }
