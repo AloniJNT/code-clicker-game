@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(() => {
         let roll = Math.floor(Math.random() * 10) + 1;
         if (roll === LUCKY_NUMBER) createLuckyButton();
-    }, 60000);
+    }, 25000);
 
     function createLuckyButton() {
         const btn = document.createElement('button');
