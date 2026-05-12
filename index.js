@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (linesOfCode >= price) {
             linesOfCode -= price;
             clickPower++;
-            upgradeCost *= 1.5;
+            upgradeCost *= 1.2;
             updateUI();
         } else {
             countDisplay.classList.add('error-text');
@@ -147,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (linesOfCode >= price) {
             linesOfCode -= price;
             autoCodeSpeed++;
-            juniorDevCost *= 1.5;
+            juniorDevCost *= 1.2;
             updateUI();
         }
     };
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (clickPower > 1) {
             linesOfCode += Math.round((upgradeCost / 1.5) * 0.7);
             clickPower--;
-            upgradeCost /= 1.5;
+            upgradeCost /= 1.2;
             updateUI();
         }
     };
@@ -165,7 +165,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (autoCodeSpeed > 0) {
             linesOfCode += Math.round((juniorDevCost / 1.5) * 0.7);
             autoCodeSpeed--;
-            juniorDevCost /= 1.5;
+            juniorDevCost /= 1.2;
             updateUI();
         }
     };
