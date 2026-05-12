@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const clickButton = document.getElementById('code-button');
     const upgradeButton = document.getElementById('upgrade-keyboard');
     const juniorButton = document.getElementById('buy-junior');
+    const sellKeyboardButton = document.getElementById('sell-keyboard');
+    const sellJuniorButton = document.getElementById('sell-junior');
 
     function showError() {
-        alert("Error: Insufficient funds!\nYou need more Lines of Code.");
         countDisplay.classList.add('error-text');
         setTimeout(() => countDisplay.classList.remove('error-text'), 500);
     }
 
-    // --- Hackathon System ---
     setInterval(() => {
         if (eventMultiplier === 1) { 
             timeLeft--;
@@ -50,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
         eventMultiplier = 3;
         costMultiplier = 0.5;
         eventBanner.style.display = "block";
-        eventBanner.style.background = "#ffcc00";
         eventBanner.innerText = "🚀 HACKATHON ACTIVE! 3X CODE & 50% OFF!";
         updateUI();
         setTimeout(() => {
@@ -61,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 30000);
     }
 
-    // --- Lucky Button System ---
     setInterval(() => {
         let roll = Math.floor(Math.random() * 10) + 1;
         if (roll === LUCKY_NUMBER) createLuckyButton();
@@ -75,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const y = Math.random() * (window.innerHeight - 100);
         btn.style.left = Math.max(10, x) + 'px';
         btn.style.top = Math.max(10, y) + 'px';
-        btn.onclick = () => { triggerLuckyEvent(); btn.remove(); };
+        btn.onclick = () => { triggerLuckyEvent(); btn.remove(); if(window.confetti) confetti(); };
         document.body.appendChild(btn);
         setTimeout(() => { if(btn.parentNode) btn.remove(); }, 10000);
     }
@@ -112,7 +110,6 @@ document.addEventListener('DOMContentLoaded', () => {
         updateUI();
     }
 
-    // --- Core Logic ---
     clickButton.addEventListener('click', () => {
         linesOfCode += (clickPower * eventMultiplier * luckyMultiplier);
         updateUI();
@@ -138,6 +135,26 @@ document.addEventListener('DOMContentLoaded', () => {
         } else { showError(); }
     });
 
+    sellKeyboardButton.addEventListener('click', () => {
+        if (clickPower > 1) {
+            let refund = Math.round((upgradeCost / 1.5) * 0.7);
+            linesOfCode += refund;
+            clickPower -= 1;
+            upgradeCost = Math.round(upgradeCost / 1.5);
+            updateUI();
+        }
+    });
+
+    sellJuniorButton.addEventListener('click', () => {
+        if (autoCodeSpeed > 0) {
+            let refund = Math.round((juniorDevCost / 1.5) * 0.7);
+            linesOfCode += refund;
+            autoCodeSpeed -= 1;
+            juniorDevCost = Math.round(juniorDevCost * 1.5);
+            updateUI();
+        }
+    });
+
     setInterval(() => {
         linesOfCode += (autoCodeSpeed * eventMultiplier * luckyMultiplier);
         updateUI();
@@ -148,8 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentMult = eventMultiplier * luckyMultiplier;
         powerDisplay.innerText = (clickPower * currentMult).toLocaleString();
         autoDisplay.innerText = (autoCodeSpeed * currentMult).toLocaleString();
-        upgradeButton.innerText = `Better Keyboard (Cost: ${Math.round(upgradeCost * costMultiplier)})`;
-        juniorButton.innerText = `Hire Junior Dev (Cost: ${Math.round(juniorDevCost * costMultiplier)})`;
+        upgradeButton.innerText = `Upgrade Keyboard (${Math.round(upgradeCost * costMultiplier)})`;
+        juniorButton.innerText = `Hire Junior Dev (${Math.round(juniorDevCost * costMultiplier)})`;
     }
 
     function updateTimerUI() {
