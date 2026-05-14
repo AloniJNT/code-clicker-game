@@ -28,7 +28,6 @@ body {
     overflow-x: hidden;
 }
 
-/* באנר אירועים */
 #event-banner {
     display: none;
     width: 100%;
@@ -99,6 +98,9 @@ hr {
     position: relative;
     box-shadow: 0 8px 0 var(--button-depth), 0 15px 25px rgba(0, 0, 0, 0.5);
     transition: all 0.1s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 #code-button:active {
@@ -106,13 +108,77 @@ hr {
     box-shadow: 0 2px 0 var(--button-depth), 0 5px 10px rgba(0, 0, 0, 0.5);
 }
 
+/* כפתור חנות בצד ימין למעלה */
+#shop-toggle-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(198, 120, 221, 0.4);
+    transition: 0.2s;
+    z-index: 1500;
+}
+
+#shop-toggle-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(198, 120, 221, 0.6);
+}
+
+/* חנות בצד ימין למעלה */
 .shop {
-    width: 100%;
-    max-width: 500px;
-    margin-top: 20px;
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 90%;
+    max-width: 400px;
+    max-height: 85vh;
+    background: var(--card-bg);
+    backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+    z-index: 3000;
+    padding: 25px;
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(50px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.shop-header {
     display: flex;
-    flex-direction: column;
-    gap: 15px;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.shop-header h2 { color: var(--primary-neon); }
+
+#close-shop-btn {
+    background: none;
+    border: none;
+    color: var(--danger);
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.shop-content {
+    overflow-y: auto;
+    max-height: calc(85vh - 100px);
+    padding-right: 5px;
 }
 
 .item-container {
@@ -121,6 +187,7 @@ hr {
     align-items: center;
     width: 100%;
     gap: 8px;
+    margin-bottom: 15px;
 }
 
 button[id^="upgrade"], button[id^="buy"] {
@@ -130,8 +197,7 @@ button[id^="upgrade"], button[id^="buy"] {
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    width: 90%;
-    max-width: 350px;
+    width: 100%;
     font-weight: bold;
     transition: 0.2s;
 }
@@ -141,14 +207,13 @@ button[id^="upgrade"]:hover, button[id^="buy"]:hover {
 }
 
 button[id^="sell"] {
-    padding: 10px;
+    padding: 8px;
     background-color: #b20b0b;
     color: white;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    width: 60%;
-    max-width: 200px;
+    width: 70%;
     font-size: 0.8rem;
     transition: 0.2s;
 }
