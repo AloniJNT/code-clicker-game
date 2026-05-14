@@ -5,15 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Code Clicker: Pro Edition</title>
     <link rel="stylesheet" href="index.css">
-    
+    <script src="jsdelivr.net" defer></script>
     <script src="index.js" defer></script>
 </head>
 <body>
 
-    <div id="event-banner">
-    <span id="event-message">🚀 HACKATHON ACTIVE!</span> 
-    [<span id="event-duration-timer">00:30</span>]
-</div>
+    <div id="event-banner">🚀 HACKATHON ACTIVE! 3X CODE & 50% OFF!</div>
 
     <div id="lucky-timer-container">
         <span class="bonus-label">🌟 BONUS ACTIVE:</span>
@@ -24,27 +21,44 @@
     
     <div class="stats">
         <p>Lines of Code: <span id="count">0</span></p>
-        <p>Next Hackathon 🚀 in: <span id="event-timer">15:00</span></p>
+        <p>Next Hackathon in: <span id="event-timer">15:00</span></p>
         <hr>
         <p>Click Power: <span id="click-power">1</span> LOC/click</p>
         <p>Auto-Rate: <span id="auto-speed">0</span> LOC/sec</p>
     </div>
     
     <div class="main-area">
-        <button id="code-button">click 🖥️</button>
+        <button id="code-button">CLICK 💻</button>
     </div>
 
-    <div class="shop">
-        <h2>Developer Shop</h2>
-        
-        <div class="item-container">
-            <button id="upgrade-keyboard">upgrade Keyboard (Cost: 10)</button>
-            <button id="sell-keyboard" class="sell-btn">Sell (70% Refund)</button>
+    <button id="shop-toggle-btn">🛒 Open Shop</button>
+
+    <div class="shop" id="developer-shop">
+        <div class="shop-header">
+            <h2>Developer Shop</h2>
+            <button id="close-shop-btn">×</button>
         </div>
         
-        <div class="item-container">
-            <button id="buy-junior">Hire Junior Dev (Cost: 50)</button>
-            <button id="sell-junior" class="sell-btn">Sell (70% Refund)</button>
+        <div class="shop-content">
+            <div class="item-container">
+                <button id="upgrade-keyboard">Upgrade Keyboard (Cost: 10)</button>
+                <button id="sell-keyboard" class="sell-btn">Sell (70% Refund)</button>
+            </div>
+            
+            <div class="item-container">
+                <button id="buy-junior">Hire Junior Dev (Cost: 50)</button>
+                <button id="sell-junior" class="sell-btn">Sell (70% Refund)</button>
+            </div>
+
+            <div class="item-container">
+                <button id="buy-senior">Hire Senior Dev (Cost: 250)</button>
+                <button id="sell-senior" class="sell-btn">Sell (70% Refund)</button>
+            </div>
+
+            <div class="item-container">
+                <button id="buy-ai">Deploy AI Copilot (Cost: 1000)</button>
+                <button id="sell-ai" class="sell-btn">Sell (70% Refund)</button>
+            </div>
         </div>
     </div>
 
